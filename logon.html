@@ -5,31 +5,9 @@
 <body>
     <h2>Вхід до системи</h2>
 
-    <form onsubmit="CheckLogin(event)">
+    <form action="/login.py" method="post">
         <input type="text" placeholder="Full name" name="name" id="name">
         <input type="password" placeholder="Full password" name="password" id="password">
         <input type="submit" value="увійти">
     </form>
-    <p id="error" style="color:red;"></p>
-    <script>
-        let falseD=0; remain=3
-        function CheckLogin(event){
-            event.preventDefault()
-            const name= document.getElementById('name').value
-            const password= document.getElementById('password').value
-
-            if (name==='Dog' && password==='1234'){
-                window.location.href='http://localhost:8080'
-            } else
-                falseD++; remain--
-                
-
-                if (falseD==3){document.getElementById('error').textContent = " забагато спроб";
-                document.querySelector('input[type="submit"]').disabled = true}
-                else
-                    document.getElementById('error').textContent = "залишилось " + remain + " разів"
-
-        
-        }
-    </script>
 </body>
