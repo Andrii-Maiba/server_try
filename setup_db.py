@@ -14,9 +14,9 @@ CREATE TABLE IF NOT EXISTS users (
 )
 """)
 
-# Insert sample user (username: Dog, password: 1234)
-hashed = bcrypt.hashpw('1234'.encode('utf-8'), bcrypt.gensalt())
-cursor.execute("INSERT OR IGNORE INTO users (username, password_hash) VALUES (?, ?)", ('Dog', hashed.decode('utf-8')))
+# Insert or update sample user (username: Dog, password: 12345)
+hashed = bcrypt.hashpw('12345'.encode('utf-8'), bcrypt.gensalt())
+cursor.execute("INSERT OR REPLACE INTO users (username, password_hash) VALUES (?, ?)", ('Dog', hashed.decode('utf-8')))
 
 conn.commit()
 cursor.close()
